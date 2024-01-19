@@ -8,6 +8,7 @@ const Card = (props) => {
     const [loading, setLoading] = useState(true);
 
     const fetchData = async (endpoint) => {
+
         return await fetch(endpoint)
             .then(response => {
                 return response.json();
@@ -19,11 +20,10 @@ const Card = (props) => {
 
     useEffect(() => {
         const { url } = data;
-        fetchData(url);
+        if (!data.image) fetchData(url)
     }, []);
 
     if (loading) return null;
-
 
     return (
         <div className="card col-3 p-4">

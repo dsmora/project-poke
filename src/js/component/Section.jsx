@@ -23,8 +23,7 @@ const Section = () => {
     }, []);
 
     const onHandleDelete = (pokemon) => {
-        const newArray = data.filter(item => item.name !== pokemon.name);
-        setData([...newArray]);
+        setData(data.filter(item => item.name !== pokemon.name));
     }
 
     if (loading) return <h3>Loading</h3>;
@@ -32,8 +31,8 @@ const Section = () => {
     return (
         <div className="row">
             {
-                data.map((item, index) => (
-                    <Card key={`${item.name}-${index}`} pokemon={item} onDelete={onHandleDelete} />
+                data.map((item) => (
+                    <Card key={`${item.name}`} pokemon={item} onDelete={onHandleDelete} />
                 ))
             }
         </div>
